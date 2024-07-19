@@ -3,7 +3,7 @@
 {
   # inputs,
   outputs,
-  # lib,
+  lib,
   # config,
   pkgs,
   ...
@@ -21,6 +21,7 @@
     ./src/stylix.nix
     ./src/stylix-home.nix
     # ./src/hyprland.nix
+    ./src/zsh.nix
   ];
 
   nixpkgs = {
@@ -32,7 +33,7 @@
       outputs.overlays.unstable-packages
 
       # You can also add overlays exported from other flakes:
-      # neovim-nightly-overlay.overlays.default
+      # neovim-nightzsh-powerlevel10k meslo-lgs-nfly-overlay.overlays.default
 
       # Or define it inline, for example:
       # (final: prev: {
@@ -106,27 +107,13 @@
     noto-fonts-cjk
   	noto-fonts-emoji
     jetbrains.datagrip
+    warp-terminal
+    zsh-powerlevel10k
   ];
 
   # Enable home-manager and git
   programs.home-manager.enable = true;
-  programs.zsh = {
-    enable = true;
-    enableCompletion = true;
-    autosuggestion.enable = true;
-    syntaxHighlighting.enable = true;
-    oh-my-zsh = {
-      enable = true;
-      plugins = [ "git" "sudo" "docker" "kubectl" ];
-    };
-    # plugins = [
-    #   {
-    #     name = "zsh-powerlevel10k";
-    #     src = "${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/";
-    #     file = "powerlevel10k.zsh-theme";
-    #   }
-    # ];
-  };
+  
   programs.neovim = {
     enable = true;
     defaultEditor = true;

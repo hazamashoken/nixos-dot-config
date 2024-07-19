@@ -5,7 +5,7 @@
 } : {
   services.xserver = {
     enable = true;
-    # videoDrivers = [ "intel" "nvidia" ];
+    videoDrivers = [ "vmware" ];
     # displayManager.lightdm = {
     #   enable = true;
     #   greeters.slick.enable = true;
@@ -22,15 +22,15 @@
   services.displayManager.sddm = {
     enable = true;
     wayland.enable = true;
-    theme = "${import ./sddm-theme.nix {inherit pkgs;}}";
+    theme = "tokyo-night-sddm";
   };
   services.desktopManager.plasma6.enable = true;
 
-  services.logind.extraConfig = ''
-    HandlePowerKey=ignore
-    HandleLidSwitch=suspend-then-hibernate
-    HandleLidSwitchExternalPower=hybrid-sleep
-  '';
+  # services.logind.extraConfig = ''
+  #   HandlePowerKey=ignore
+  #   HandleLidSwitch=suspend-then-hibernate
+  #   HandleLidSwitchExternalPower=hybrid-sleep
+  # '';
   services.upower.enable = true;
   services.usbmuxd = {
     enable = true;

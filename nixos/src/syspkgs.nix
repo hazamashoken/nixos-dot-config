@@ -31,5 +31,7 @@
     nano
     # Performance util
     mangohud
+    # Custom package
+    tokyo-night-sddm
   ];
 }

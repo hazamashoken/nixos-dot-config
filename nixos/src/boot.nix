@@ -16,9 +16,9 @@ in {
     efi.canTouchEfiVariables = true;
     grub = {
       enable = true;
-      efiSupport = true;
+      # efiSupport = true;
       device = "nodev";
-      useOSProber = true;
+      # useOSProber = true;
       configurationLimit = 10;
       #extraFiles = {
         # "dsdt.aml" = "${../patch/hpomen_acpi_patch.aml}";
