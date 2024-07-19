@@ -1,7 +1,6 @@
 # This file defines overlays
 {
   inputs,
-  # pkgs,
   ...
 } : {
   # This one brings our custom packages from the 'pkgs' directory

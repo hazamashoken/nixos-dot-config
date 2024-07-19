@@ -32,6 +32,6 @@
     # Performance util
     mangohud
     # Custom package
-    tokyo-night-sddm
+    sddm-theme
   ];
 }

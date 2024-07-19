@@ -1,6 +1,7 @@
 {
   pkgs,
   inputs,
+  lib,
   ...
 } : {
   services.xserver = {
@@ -22,7 +23,7 @@
   services.displayManager.sddm = {
     enable = true;
     wayland.enable = true;
-    theme = "tokyo-night-sddm";
+    theme = "sddm-theme";
   };
   services.desktopManager.plasma6.enable = true;
 
