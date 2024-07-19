@@ -32,7 +32,7 @@
       outputs.overlays.unstable-packages
 
       # You can also add overlays exported from other flakes:
-      # neovim-nightly-overlay.overlays.default
+      # neovim-nightzsh-powerlevel10k meslo-lgs-nfly-overlay.overlays.default
 
       # Or define it inline, for example:
       # (final: prev: {
@@ -106,6 +106,8 @@
     noto-fonts-cjk
   	noto-fonts-emoji
     jetbrains.datagrip
+    warp-terminal
+    zsh-powerlevel10k
   ];
 
   # Enable home-manager and git
@@ -119,14 +121,20 @@
       enable = true;
       plugins = [ "git" "sudo" "docker" "kubectl" ];
     };
-    # plugins = [
-    #   {
-    #     name = "zsh-powerlevel10k";
-    #     src = "${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/";
-    #     file = "powerlevel10k.zsh-theme";
-    #   }
-    # ];
+    plugins = [
+      {
+        name = "zsh-powerlevel10k";
+        src = "${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/";
+        file = "powerlevel10k.zsh-theme";
+      }
+    ];
   };
+  
+  home.file.".p10k.zsh" = {
+    source = ./.p10k.zsh;
+    executable = true;
+  };
+
   programs.neovim = {
     enable = true;
     defaultEditor = true;
