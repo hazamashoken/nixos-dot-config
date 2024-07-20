@@ -110,9 +110,11 @@
     zsh-powerlevel10k
     # dev tools
     warp-terminal
-    volta
-    pyenv
     jetbrains.datagrip
+    poetry
+
+    # writing
+    texliveTeTeX
   ];
 
   # Enable home-manager and git
