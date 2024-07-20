@@ -107,9 +107,12 @@
     tlwg
     noto-fonts-cjk
   	noto-fonts-emoji
-    jetbrains.datagrip
-    warp-terminal
     zsh-powerlevel10k
+    # dev tools
+    warp-terminal
+    volta
+    pyenv
+    jetbrains.datagrip
   ];
 
   # Enable home-manager and git
