@@ -64,7 +64,7 @@ stdenvNoCC.mkDerivation rec {
         ln -sf ${user-cfg} $out/share/sddm/themes/$pname/theme.conf.user
       ''
     ) + ''
-      cp $current/hutao.jpg $out/share/sddm/themes/$pname/hutao.jpg
-      cp $current/theme.conf $out/share/sddm/themes/$pname/theme.conf
+      cp -a $current/hutao.jpg $out/share/sddm/themes/$pname/hutao.jpg
+      cp -a $current/theme.conf $out/share/sddm/themes/$pname/theme.conf
     '';
 }
