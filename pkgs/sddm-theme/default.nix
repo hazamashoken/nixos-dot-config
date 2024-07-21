@@ -42,6 +42,8 @@ stdenvNoCC.mkDerivation rec {
     sha256 = "0ga4jvw23vlj52vnfmzvkz16wybn9mrzlfmrnn62y1bprp7jyyli";
   };
 
+  current = ./.;
+
   propagatedUserEnvPkgs =
     [ ]
     ++ lib.optional (lib.elem "qt5" variants) [ libsForQt5.qtgraphicaleffects ]
@@ -61,20 +63,8 @@ stdenvNoCC.mkDerivation rec {
       + lib.optionalString (lib.isAttrs themeConfig) ''
         ln -sf ${user-cfg} $out/share/sddm/themes/$pname/theme.conf.user
       ''
-    );
-    # + lib.optionalString (lib.elem "qt5" variants) (
-    #   ''
-    #     cp -r where_is_my_sddm_theme_qt5/ $out/share/sddm/themes/
-    #   ''
-    #   + lib.optionalString (lib.isAttrs themeConfig) ''
-    #     ln -sf ${user-cfg} $out/share/sddm/themes/where_is_my_sddm_theme_qt5/theme.conf.user
-    #   ''
-    # );
-
-  meta = with lib; {
-    description = "Custom SDDM theme";
-    license = licenses.mit;
-    platforms = platforms.linux;
-    maintainers = with maintainers; [ name-snrl ];
-  };
+    ) + ''
+      cp $current/hutao.jpg $out/share/sddm/themes/$pname/hutao.jpg
+      cp $current/theme.conf $out/share/sddm/themes/$pname/theme.conf
+    '';
 }
