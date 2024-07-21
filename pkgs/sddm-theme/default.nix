@@ -28,10 +28,6 @@ let
     "qt5"
     "qt6"
   ];
-  image = fetchurl {
-    url = "https://static.vecteezy.com/system/resources/previews/036/431/995/non_2x/ai-generated-colorful-starry-sky-with-sunset-background-in-anime-style-generative-ai-photo.jpg";
-    sha256 = "1dy299d99x4p9bix0bd227qs7lchijgrl2idlz93kjbdpnhmmf1q";
-  };
 in
 
 lib.checkListOfEnum "sddm-astronaut-theme: variant" validVariants variants

@@ -98,6 +98,7 @@
     # Internet / Social media
     firefox
     chromium
+    microsoft-edge
     vesktop # discord, but doesn't suck
     # Fonts
     (nerdfonts.override {
