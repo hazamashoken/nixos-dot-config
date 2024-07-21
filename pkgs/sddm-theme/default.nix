@@ -5,6 +5,7 @@
   fetchFromGitHub,
   qt6,
   libsForQt5,
+  fetchurl,
   variants ? [ "qt6" ],
   /*
     An example of how you can override the background on the NixOS logo
@@ -27,9 +28,13 @@ let
     "qt5"
     "qt6"
   ];
+  image = fetchurl {
+    url = "https://static.vecteezy.com/system/resources/previews/036/431/995/non_2x/ai-generated-colorful-starry-sky-with-sunset-background-in-anime-style-generative-ai-photo.jpg";
+    sha256 = "1dy299d99x4p9bix0bd227qs7lchijgrl2idlz93kjbdpnhmmf1q";
+  };
 in
 
-lib.checkListOfEnum "sddm-astronaut-them: variant" validVariants variants
+lib.checkListOfEnum "sddm-astronaut-theme: variant" validVariants variants
 
 stdenvNoCC.mkDerivation rec {
   pname = "sddm-astronaut-theme";
@@ -42,8 +47,6 @@ stdenvNoCC.mkDerivation rec {
     sha256 = "0ga4jvw23vlj52vnfmzvkz16wybn9mrzlfmrnn62y1bprp7jyyli";
   };
 
-  current = ./.;
-
   propagatedUserEnvPkgs =
     [ ]
     ++ lib.optional (lib.elem "qt5" variants) [ libsForQt5.qtgraphicaleffects ]
@@ -52,8 +55,7 @@ stdenvNoCC.mkDerivation rec {
       qt6.qtsvg
     ];
 
-  installPhase =
-    ''
+  installPhase = ''
       mkdir -p $out/share/sddm/themes/
     ''
     + lib.optionalString (lib.elem "qt6" variants) (
@@ -63,8 +65,5 @@ stdenvNoCC.mkDerivation rec {
       + lib.optionalString (lib.isAttrs themeConfig) ''
         ln -sf ${user-cfg} $out/share/sddm/themes/$pname/theme.conf.user
       ''
-    ) + ''
-      cp -a $current/hutao.jpg $out/share/sddm/themes/$pname/hutao.jpg
-      cp -a $current/theme.conf $out/share/sddm/themes/$pname/theme.conf
-    '';
+    );
 }
